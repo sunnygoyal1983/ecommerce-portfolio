@@ -1,0 +1,68 @@
+[
+  {
+    "id": "p1",
+    "name": "Premium Wireless Headphones",
+    "slug": "premium-wireless-headphones",
+    "description": "Experience crystal clear sound with our flagship wireless headphones. Features active noise cancellation and 40-hour battery life.",
+    "price": 299.99,
+    "category": "electronics",
+    "images": ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop"],
+    "featured": true,
+    "stock": 15
+  },
+  {
+    "id": "p2",
+    "name": "Minimalist Analog Watch",
+    "slug": "minimalist-analog-watch",
+    "description": "A timeless design that complements any outfit. Features a genuine leather strap and Japanese quartz movement.",
+    "price": 149.00,
+    "category": "accessories",
+    "images": ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop"],
+    "featured": true,
+    "stock": 25
+  },
+  {
+    "id": "p3",
+    "name": "Cotton Oversized T-Shirt",
+    "slug": "cotton-oversized-t-shirt",
+    "description": "Premium 100% cotton oversized t-shirt for maximum comfort and style.",
+    "price": 45.00,
+    "category": "fashion",
+    "images": ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop"],
+    "featured": false,
+    "stock": 50
+  },
+  {
+    "id": "p4",
+    "name": "Ceramic Coffee Mug Set",
+    "slug": "ceramic-coffee-mug-set",
+    "description": "Set of 4 handcrafted ceramic mugs with a matte finish. Perfect for your morning routine.",
+    "price": 35.00,
+    "category": "home-living",
+    "images": ["https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=1000&auto=format&fit=crop"],
+    "featured": true,
+    "stock": 10
+  },
+  {
+    "id": "p5",
+    "name": "Smart Fitness Tracker",
+    "slug": "smart-fitness-tracker",
+    "description": "Track your steps, heart rate, and sleep with precision. Water-resistant up to 50m.",
+    "price": 79.99,
+    "category": "electronics",
+    "images": ["https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?q=80&w=1000&auto=format&fit=crop"],
+    "featured": false,
+    "stock": 30
+  },
+  {
+    "id": "p6",
+    "name": "Leather Messenger Bag",
+    "slug": "leather-messenger-bag",
+    "description": "Handcrafted leather bag with multiple compartments for your laptop and essentials.",
+    "price": 189.00,
+    "category": "accessories",
+    "images": ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop"],
+    "featured": false,
+    "stock": 8
+  }
+]

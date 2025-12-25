@@ -1,65 +1,112 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import { getCategories, getFeaturedProducts } from '@/lib/data';
+import ProductCard from '@/components/ProductCard';
 
-export default function Home() {
+export default async function HomePage() {
+  const categories = await getCategories();
+  const featuredProducts = await getFeaturedProducts();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="space-y-16 pb-16">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] flex items-center justify-center bg-gray-900 text-white overflow-hidden">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2000&auto=format&fit=crop"
+          alt="Hero"
+          fill
+          className="object-cover opacity-60"
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Elevate Your Lifestyle
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200">
+            Discover our curated collection of premium products designed for modern living.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/category/electronics"
+            className="inline-block bg-white text-black px-8 py-3 rounded-md font-bold hover:bg-gray-100 transition"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Shop Now
+          </Link>
         </div>
-      </main>
+      </section>
+
+      {/* Categories Section */}
+      <section className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((category) => (
+            <Link
+              key={category.id}
+              href={`/category/${category.slug}`}
+              className="group relative h-64 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+            >
+              <Image
+                src={category.image}
+                alt={category.name}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                <h3 className="text-white text-2xl font-bold uppercase tracking-widest">{category.name}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold">Featured Products</h2>
+          <Link href="/category/electronics" className="text-black font-semibold hover:underline">
+            View All →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Free Shipping</h3>
+              <p className="text-gray-600">On all orders over $100. Fast delivery to your doorstep.</p>
+            </div>
+            <div>
+              <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Secure Payments</h3>
+              <p className="text-gray-600">Your security is our priority. Encrypted payment processing.</p>
+            </div>
+            <div>
+              <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Easy Returns</h3>
+              <p className="text-gray-600">30-day money-back guarantee. Hassle-free return process.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
