@@ -1,40 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 E-Commerce Website (Next.js • JSON-Based)
 
-## Getting Started
+A clean, portfolio-focused e-commerce website built with **Next.js App Router**.
+This project demonstrates modern frontend architecture, cart logic, and checkout flow using **static JSON data** instead of a database.
 
-First, run the development server:
+> **Live production reference:** https://www.easyshoppi.com  
+> *(This repository is a simplified, open-source version created for portfolio demonstration.)*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Why I Built This
+
+I built this project to demonstrate **frontend engineering skills** — not backend CRUD complexity.
+
+The focus areas are:
+- Next.js App Router architecture
+- Component-driven UI design
+- Cart and checkout business logic
+- Global state management
+- Clean routing and user experience
+
+For clarity and speed, product and category data are intentionally read from **static JSON files**.
+This keeps the project easy to understand while still being production-ready in structure.
+
+---
+
+## 🚀 Features
+
+- Product & category listing from JSON files
+- Dynamic category and product pages
+- Add to cart / remove from cart
+- Quantity updates with live totals
+- Cart persistence using `localStorage`
+- Checkout form with validation
+- Mock payment flow
+- Thank-you page with cart reset
+- Fully client-side, fast, and simple
+
+---
+
+## 🧱 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** React Context
+- **Data Source:** Static JSON files
+- **Persistence:** Browser `localStorage`
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+ ├── app/
+ │   ├── page.tsx
+ │   ├── category/[slug]/page.tsx
+ │   ├── product/[slug]/page.tsx
+ │   ├── cart/page.tsx
+ │   ├── checkout/page.tsx
+ │   └── thank-you/page.tsx
+ │
+ ├── data/
+ │   ├── products.json
+ │   └── categories.json
+ │
+ ├── components/
+ │   ├── Navbar.tsx
+ │   ├── ProductCard.tsx
+ │   ├── CartItem.tsx
+ │   └── CheckoutForm.tsx
+ │
+ ├── context/
+ │   └── CartContext.tsx
+ │
+ ├── lib/
+ │   ├── cart.ts
+ │   └── utils.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧠 Data Strategy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project intentionally does **not** use a database.
 
-## Learn More
+All products and categories are read from static JSON files to:
+- Keep the project lightweight
+- Focus on frontend logic and UX
+- Avoid unnecessary backend complexity
 
-To learn more about Next.js, take a look at the following resources:
+In a real production system, these JSON files can be replaced with API endpoints or a database **without changing the frontend architecture**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛍️ User Flow
 
-## Deploy on Vercel
+1. Browse products by category
+2. View product details
+3. Add items to cart
+4. Update quantities or remove items
+5. Proceed to checkout
+6. Submit checkout form
+7. See confirmation on thank-you page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Getting Started
 
+### 1. Install dependencies
+```bash
+npm install
+```
 
-Production reference: https://www.easyshoppi.com
+### 2. Run development server
+```bash
+npm run dev
+```
 
+Open:
+```
+http://localhost:3000
+```
+
+---
+
+## ⚠️ Known Limitations
+
+- No authentication or user accounts
+- No real payment gateway (checkout is mocked)
+- No backend APIs or database
+- Cart is browser-specific (localStorage)
+
+These trade-offs are intentional for portfolio clarity.
+
+---
+
+## 🔄 Possible Extensions
+
+- Replace JSON data with API or database
+- Add admin product management
+- Integrate real payment gateway
+- Add user authentication
+- Server-side cart persistence
+
+---
+
+## 📌 Portfolio Context
+
+This project complements my production e-commerce platform (**Easyshoppi**) and showcases frontend engineering decisions, clean architecture, and realistic user flows in a simplified, open-source format.
+
+---
+
+## 📝 License
+
+MIT
